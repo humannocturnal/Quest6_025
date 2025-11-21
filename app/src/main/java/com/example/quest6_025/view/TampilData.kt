@@ -31,7 +31,7 @@ import com.example.quest6_025.model.Siswa
 @Composable
 fun TampilData(
     statusUiSiswa: Siswa,
-    onBackButtonCliked:()-> Unit
+    onBackButtonCliked: () -> Unit
 ) {
     val items = listOf(
         Pair(stringResource(id = R.string.nama_lengkap), statusUiSiswa.nama),
@@ -61,7 +61,7 @@ fun TampilData(
             ) {
                 items.forEach { item ->
                     Column {
-                        Text(text = item.first.uppercase(), fontSize = 16.sp)
+                        Text(text = item.first, fontSize = 16.sp)
                         Text(
                             text = item.second,
                             fontWeight = FontWeight.Bold,
@@ -77,7 +77,7 @@ fun TampilData(
 
             Button (
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {onBackButtonCliked}
+                onClick = { onBackButtonCliked() }
             ){
                 Text(text = stringResource(id = R.string.back))
             }
