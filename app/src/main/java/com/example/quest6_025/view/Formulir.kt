@@ -30,12 +30,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.example.quest6_025.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    pilihanJK: List<String>
+    pilihanJK: List<String>,
     onSubmitButtonClicked : (MutableList<String>) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -94,18 +96,20 @@ fun FormIsian(
                 color = Color.Red
             )
             OutlinedTextField(
-                value = "",
+                value = txtAlamat,
                 singleLine = true,
-                modifier = Modifier
-                    .width(width = 250.dp),
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.width(width = 250.dp),
                 label = {Text(text="Alamat")},
-                onValueChange = {},
+                onValueChange = {
+                    txtAlamat = it
+                },
             )
             Spacer(modifier = Modifier.height(height = 30.dp))
             Button(
-                modifier = Modifier.fillMaxWidth(fraction = 1f)
-                    .padding(all= 25.dp),
-                onClick = OnSubmitBtnClick
+                modifier = Modifier.fillMaxWidth(fraction = 1f),
+                enabled = txtAlamat.isNotEmpty(),
+                onClick = { onSubmitButtonClicked(listData) }
             ) {
                 Text (stringResource(id = R.string.submit))
             }
