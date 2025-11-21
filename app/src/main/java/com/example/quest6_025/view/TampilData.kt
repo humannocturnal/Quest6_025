@@ -29,6 +29,7 @@ import com.example.quest6_025.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
+
     onBackBtnClick: () -> Unit
 ) {
     val items = listOf(
